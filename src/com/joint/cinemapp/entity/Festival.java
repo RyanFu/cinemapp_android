@@ -2,22 +2,52 @@ package com.joint.cinemapp.entity;
 
 import java.util.ArrayList;
 
+import com.joint.cinemapp.R;
+
 public class Festival {
 	private int id;
 	private String festivalName;
 	private String festivalDate;
 	private String introduction;
 	private String introductionName;
-	private String posterUrl;
+	//private String posterUrl;
+	private int posterUrl;
 	private ArrayList<MovieInfo> movieInfos;
 	private MovieListen movieListen;
 
-	
-	public Festival() {
-		this(-1, "", "", "", "", "", new ArrayList<MovieInfo>(10), new MovieListen());
+	public Festival fakeData1() {
+		Festival festival = new Festival();
+		ArrayList<MovieInfo> lvMovies = new ArrayList<MovieInfo>(10);
+		lvMovies.add(new MovieInfo().fakeData1());
+		lvMovies.add(new MovieInfo().fakeData2());
+		lvMovies.add(new MovieInfo().fakeData3());
+		
+		festival.setFestivalName("第63屆 柏林影展");
+		festival.setFestivalDate("2013/02/07~2013/02/17");
+		festival.setPosterUrl(R.drawable.film_festival_1);
+		festival.setMovieInfos(movieInfos);
+		return festival;
 	}
 	
-	public Festival (int id, String festivalName, String festivalDate, String introduction, String introductionName, String posterUrl,
+	public Festival fakeData2() {
+		Festival festival = new Festival();
+		ArrayList<MovieInfo> lvMovies = new ArrayList<MovieInfo>(10);
+		lvMovies.add(new MovieInfo().fakeData1());
+		lvMovies.add(new MovieInfo().fakeData2());
+		lvMovies.add(new MovieInfo().fakeData3());
+		
+		festival.setFestivalName("日舞影展");
+		festival.setFestivalDate("2013/02/07~2013/02/17");
+		festival.setPosterUrl(R.drawable.film_festival_2);
+		festival.setMovieInfos(movieInfos);
+		return festival;
+	}
+	
+	public Festival() {
+		this(-1, "", "", "", "", -1, new ArrayList<MovieInfo>(10), new MovieListen());
+	}
+	
+	public Festival (int id, String festivalName, String festivalDate, String introduction, String introductionName, int posterUrl,
 			  ArrayList<MovieInfo> movieInfos, MovieListen movieListen) {
 		this.id = id;
 		this.festivalName = festivalName;
@@ -60,10 +90,10 @@ public class Festival {
 	public void setIntroductionName(String introductionName){
 		this.introductionName = introductionName;
 	}
-	public String getPosterUrl(){
+	public int getPosterUrl(){
 		return posterUrl;
 	}
-	public void setPosterUrl(String posterUrl){
+	public void setPosterUrl(int posterUrl){
 		this.posterUrl = posterUrl;
 	}
 	public ArrayList<MovieInfo> getMovieInfos(){

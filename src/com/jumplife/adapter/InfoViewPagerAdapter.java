@@ -1,18 +1,25 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
+
 import com.joint.cinemapp.PhotoGridViewActivity;
 import com.joint.cinemapp.R;
 import com.joint.cinemapp.TrailerListViewActivity;
 import com.joint.cinemapp.entity.MovieInfo;
+import com.jumplife.imageload.ImageLoader;
 import com.viewpagerindicator.IconPagerAdapter;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class InfoViewPagerAdapter extends PagerAdapter implements IconPagerAdapter{
@@ -23,7 +30,7 @@ public class InfoViewPagerAdapter extends PagerAdapter implements IconPagerAdapt
 
 	public InfoViewPagerAdapter(Activity activty, MovieInfo movieInfo) {
 		this.mActivty = activty;
-		this.movieInfo = movieInfo;
+		this.movieInfo = movieInfo.fakeData1();
 	}
 	
 	public int getCount() {
@@ -46,7 +53,30 @@ public class InfoViewPagerAdapter extends PagerAdapter implements IconPagerAdapt
 		
 		switch (pos) {
 			case 0:
-				view = View.inflate(mActivty, R.layout.movieintro_viewpage_item, null);		        
+				view = View.inflate(mActivty, R.layout.movieintro_viewpage_item, null);	
+				
+				TextView movieName = (TextView)view.findViewById(R.id.movie_name);
+				TextView movieNameEn = (TextView)view.findViewById(R.id.movie_name_en);
+				TextView movieRunningTime = (TextView)view.findViewById(R.id.movie_runningtime);
+				TextView movieReleaseDate = (TextView)view.findViewById(R.id.release_date);
+				TextView movieDirectors = (TextView)view.findViewById(R.id.director);
+				TextView movieActors = (TextView)view.findViewById(R.id.actor);
+				ImageView poster = (ImageView)view.findViewById(R.id.movie_poster);
+				
+				movieName.setText(movieInfo.getChineseName());
+				movieNameEn.setText(movieInfo.getEnglishName());
+				movieRunningTime.setText("片長:" + movieInfo.getRunningTime() + "分");
+				movieReleaseDate.setText("上映日期 : " + movieInfo.getRunningTime());
+				movieDirectors.setText("導演 : " + movieInfo.getDirectors());
+				movieActors.setText("演員 : " + movieInfo.getActors());
+				DisplayMetrics displayMetrics = new DisplayMetrics();
+				mActivty.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+				InputStream inputStream = mActivty.getResources().openRawResource(movieInfo.getPosterUrl());
+		        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+		        bitmap = Bitmap.createScaledBitmap(bitmap, displayMetrics.widthPixels, 
+		        		bitmap.getWidth() * bitmap.getHeight() / displayMetrics.widthPixels, true);
+				poster.setImageBitmap(bitmap);
+				
 				Button buttonPhoto = (Button)view.findViewById(R.id.photo);
 				buttonPhoto.setOnClickListener(new OnClickListener() {
 					public void onClick(View arg0) {
@@ -69,8 +99,9 @@ public class InfoViewPagerAdapter extends PagerAdapter implements IconPagerAdapt
 			
 			default:
 				view = View.inflate(mActivty, R.layout.moviecontent_viewpage_item, null);
-				TextView tvMovieContent = (TextView)view.findViewById(R.id.movie_introduction_content);
-				tvMovieContent.setText(movieInfo.getIntroduction());
+				TextView movieContent = (TextView)view.findViewById(R.id.movie_introduction_content);
+				movieContent.setText(movieInfo.getIntroduction());
+				Log.d("", "Movie Content : " + movieInfo.getIntroduction());
 		        
 		        break;
 		}        

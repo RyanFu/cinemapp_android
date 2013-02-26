@@ -15,6 +15,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 public class MovieInfoViewPagerActivity extends Activity {
 	
@@ -24,6 +27,8 @@ public class MovieInfoViewPagerActivity extends Activity {
 	private ViewPager mPager;
     private PageIndicator mIndicator;
 	private LoadDataTask loadtask;
+	private boolean isPlay = false;
+	private ImageButton play;
     
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,26 +44,35 @@ public class MovieInfoViewPagerActivity extends Activity {
     }
 	
 	private void initView() {
+		play = (ImageButton)findViewById(R.id.play);
+		play.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				isPlay = !isPlay;
+				if(isPlay)
+					play.setImageResource(R.drawable.pause);
+				else
+					play.setImageResource(R.drawable.play);
+			}			
+		});
 		
 	}
 	
 	private void fetchData() {
 		ArrayList<MovieInfo> lvMovies = new ArrayList<MovieInfo>(10);
-		lvMovies.add(new MovieInfo());
-		lvMovies.add(new MovieInfo());
+		lvMovies.add(new MovieInfo().fakeData1());
+		lvMovies.add(new MovieInfo().fakeData2());
+		lvMovies.add(new MovieInfo().fakeData3());
 		
 		movies = new ArrayList<ArrayList<MovieInfo>>();
 		
 		movies.add(lvMovies);
 		movies.add(lvMovies);
 		movies.add(lvMovies);
-		movies.add(lvMovies);
-		
+		movies.add(lvMovies);		
 		
 		festivals = new ArrayList<Festival>(10);
-		
-		Festival festival = new Festival();
-		festivals.add(festival);
+		festivals.add(new Festival().fakeData1());
+		festivals.add(new Festival().fakeData2());
 	}
 	
 	private void setView() {		

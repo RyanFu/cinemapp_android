@@ -1,20 +1,36 @@
 package com.joint.cinemapp.entity;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 public class Album {
 	private int id;
 	private String chineseName;
 	private String englishName;
 	private int runningTime;
 	
-	public Album() {
-		this(-1, "", "", "", new Date(), "", -1, "", new ArrayList<String>(10), new ArrayList<String>(10), "");
+	public Album fakeData1() {
+		Album album = new Album(1, "Postcard from the zoo", "Postcard from the zoo", 15);
+		return album;
 	}
 	
-	public Album (int id, String chineseName, String englishName, String introduction, Date releaseDate, String posterUrl, 
-			  int runningTime, String levelUrl, ArrayList<String> actors, ArrayList<String> directors, String youtubeId) {
+	public Album fakeData2_1() {
+		Album album = new Album(1, "Una Che_1", "Una Che_1", 15);
+		return album;
+	}
+	
+	public Album fakeData2_2() {
+		Album album = new Album(1, "Una Che_2", "Una Che_1", 15);
+		return album;
+	}
+	
+	public Album fakeData3() {
+		Album album = new Album(1, "Just the Wind", "Just the Wind", 15);
+		return album;
+	}
+	
+	public Album() {
+		this(-1, "", "", -1);
+	}
+	
+	public Album (int id, String chineseName, String englishName, int runningTime) {
 		this.id = id;
 		this.chineseName = chineseName;
 		this.englishName = englishName;

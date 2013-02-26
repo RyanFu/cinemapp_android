@@ -11,8 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MovieListenGridViewActivity extends Activity {
@@ -21,6 +23,8 @@ public class MovieListenGridViewActivity extends Activity {
 	private GridView movielistenGridView;
     private MovieListenGridAdapter adapter;
 	private LoadDataTask loadtask;
+	private boolean isPlay = false;
+	private ImageButton play;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,24 +41,32 @@ public class MovieListenGridViewActivity extends Activity {
 	
 	private void initView() {
 		movielistenGridView = (GridView)findViewById(R.id.gridview_movielisten);
+		play = (ImageButton)findViewById(R.id.play);
+		play.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				isPlay = !isPlay;
+				if(isPlay)
+					play.setImageResource(R.drawable.pause);
+				else
+					play.setImageResource(R.drawable.play);
+			}			
+		});
 	}
 	
 	private void fetchData() {
 		MovieListenList = new ArrayList<MovieListen>(10);
 		
-		MovieListen movielisten = new MovieListen();
-		MovieListenList.add(movielisten);
-		MovieListenList.add(movielisten);
-		MovieListenList.add(movielisten);
-		MovieListenList.add(movielisten);
-		MovieListenList.add(movielisten);
-		MovieListenList.add(movielisten);
+		MovieListenList.add(new MovieListen().fakeData1());
+		MovieListenList.add(new MovieListen().fakeData2());
+		MovieListenList.add(new MovieListen().fakeData3());
 	}
 	
 	private void setView() {		
 		movielistenGridView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             	Intent newAct = new Intent();
+            	Bundle bundle = new Bundle();
+                bundle.putInt("Id", MovieListenList.get(position).getId());
 	            newAct.setClass(MovieListenGridViewActivity.this, ListenViewPagerActivity.class);
 	            MovieListenGridViewActivity.this.startActivity(newAct);
             }

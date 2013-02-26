@@ -1,11 +1,14 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.joint.cinemapp.R;
 import com.joint.cinemapp.entity.MovieInfo;
 import com.jumplife.imageload.ImageLoader;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,12 +95,15 @@ public class MovieListAdapter extends BaseAdapter{
 		DisplayMetrics displayMetrics = new DisplayMetrics();
 		mActivity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		
-		/*itemView.movieChName.setText(movies.get(position).getChineseName());
+		itemView.movieChName.setText(movies.get(position).getChineseName());
 		itemView.movieEnName.setText(movies.get(position).getEnglishName());
-		itemView.movieReleaseDate.setText((movies.get(position).getReleaseDate().getYear() + 1900) + " / " +
-				(movies.get(position).getReleaseDate().getMonth() + 1) + " / " +
-				(movies.get(position).getReleaseDate().getDate()));*/
-		imageLoader.DisplayImage(movies.get(position).getYoutubeId(), itemView.poster, displayMetrics.widthPixels);
+		itemView.movieReleaseDate.setText((movies.get(position).getReleaseDate()));
+		//imageLoader.DisplayImage(movies.get(position).getYoutubeId(), itemView.poster, displayMetrics.widthPixels);
+		InputStream inputStream = mActivity.getResources().openRawResource(movies.get(position).getPosterUrl());
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+        bitmap = Bitmap.createScaledBitmap(bitmap, displayMetrics.widthPixels, 
+        		bitmap.getWidth() * bitmap.getHeight() / displayMetrics.widthPixels, true);
+		itemView.poster.setImageBitmap(bitmap);
 		
 		return convertView;
 

@@ -1,17 +1,35 @@
 package com.joint.cinemapp.entity;
 
+import com.joint.cinemapp.R;
+
 public class Comment {
 	private int id;
 	private String title;
 	private String content;
-	private String posterUrl;
+	//private String posterUrl;
+	private int posterUrl;
 	private int runningTime;
 	
-	public Comment() {
-		this(-1, "", "", "", -1);
+	public Comment fakeData1() {
+		Comment comment = new Comment(1, "", "", R.drawable.people1, 15);
+		return comment;
 	}
 	
-	public Comment (int id, String title, String content, String posterUrl, int runningTime) {
+	public Comment fakeData2() {
+		Comment comment = new Comment(1, "", "", R.drawable.people2, 15);
+		return comment;
+	}
+	
+	public Comment fakeData3() {
+		Comment comment = new Comment(1, "", "", R.drawable.people3, 15);
+		return comment;
+	}
+	
+	public Comment() {
+		this(-1, "", "", -1, -1);
+	}
+	
+	public Comment (int id, String title, String content, int posterUrl, int runningTime) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
@@ -38,10 +56,10 @@ public class Comment {
 	public void setContent(String content){
 		this.content = content;
 	}
-	public String getPosterUrl(){
+	public int getPosterUrl(){
 		return posterUrl;
 	}
-	public void setPosterUrl(String posterUrl){
+	public void setPosterUrl(int posterUrl){
 		this.posterUrl = posterUrl;
 	}
 	public int getRunningTime(){

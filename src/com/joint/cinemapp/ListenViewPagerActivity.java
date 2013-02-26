@@ -15,6 +15,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 public class ListenViewPagerActivity extends Activity {
 	
@@ -23,6 +26,8 @@ public class ListenViewPagerActivity extends Activity {
 	private ViewPager mPager;
     private PageIndicator mIndicator;
 	private LoadDataTask loadtask;
+	private boolean isPlay = false;
+	private ImageButton play;
     
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,12 +43,34 @@ public class ListenViewPagerActivity extends Activity {
     }
 	
 	private void initView() {
+		play = (ImageButton)findViewById(R.id.play);
+		play.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				isPlay = !isPlay;
+				if(isPlay)
+					play.setImageResource(R.drawable.pause);
+				else
+					play.setImageResource(R.drawable.play);
+			}			
+		});
 		
 	}
 	
 	private void fetchData() {
 		movielistens = new MovieListen();
-		ArrayList<Album> albums = new ArrayList<Album>(10);
+		
+		Bundle bundle = this.getIntent().getExtras();
+		int id = 1;//bundle.getInt("Id");
+	       
+		switch(id) {
+		case 1:
+			movielistens = movielistens.fakeData1();
+		case 2:
+			movielistens = movielistens.fakeData2();
+		case 3:
+			movielistens = movielistens.fakeData3();
+		}
+		/*ArrayList<Album> albums = new ArrayList<Album>(10);
 		ArrayList<Comment> comments = new ArrayList<Comment>(10);
 		
 		albums.add(new Album());
@@ -52,7 +79,7 @@ public class ListenViewPagerActivity extends Activity {
 		
 		comments.add(new Comment());
 		comments.add(new Comment());
-		movielistens.setComments(comments);
+		movielistens.setComments(comments);*/
 	}
 	
 	private void setView() {		

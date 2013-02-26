@@ -9,13 +9,17 @@
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent"
         android:layout_below="@+id/topbar"
-        android:layout_above="@+id/playbar"
+        android:layout_above="@+id/playerbar"
         android:background="@color/background"
         android:layout_margin="15dp"
         android:divider="@null"
         android:dividerHeight="15dp"
         android:listSelector="@null" />
-    
+    <LinearLayout android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" 
+        android:layout_width="fill_parent">
+        <include android:id="@+id/playerbar" layout="@layout/playerbar" />
+        </LinearLayout>
     <ImageButton android:id="@+id/refresh"
        android:layout_width="fill_parent"
        android:layout_height="fill_parent"

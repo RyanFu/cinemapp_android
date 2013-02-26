@@ -1,11 +1,14 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.joint.cinemapp.R;
 import com.joint.cinemapp.entity.Festival;
 import com.jumplife.imageload.ImageLoader;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,9 +92,14 @@ public class FestivalListAdapter extends BaseAdapter{
 		DisplayMetrics displayMetrics = new DisplayMetrics();
 		mActivity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         
-		/*itemView.movieChName.setText(festivals.get(position).getFestivalName());
-		itemView.movieDate.setText(festivals.get(position).getFestivalDate());*/
-		imageLoader.DisplayImage(festivals.get(position).getPosterUrl(), itemView.poster, displayMetrics.widthPixels);
+		itemView.movieChName.setText(festivals.get(position).getFestivalName());
+		itemView.movieDate.setText(festivals.get(position).getFestivalDate());
+		//imageLoader.DisplayImage(festivals.get(position).getPosterUrl(), itemView.poster, displayMetrics.widthPixels);
+		InputStream inputStream = mActivity.getResources().openRawResource(festivals.get(position).getPosterUrl());
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+        bitmap = Bitmap.createScaledBitmap(bitmap, displayMetrics.widthPixels, 
+        		bitmap.getWidth() * bitmap.getHeight() / displayMetrics.widthPixels, true);
+		itemView.poster.setImageBitmap(bitmap);
 		
 		return convertView;
 

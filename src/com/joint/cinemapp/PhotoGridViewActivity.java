@@ -10,8 +10,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class PhotoGridViewActivity extends Activity {
@@ -20,6 +22,8 @@ public class PhotoGridViewActivity extends Activity {
 	private GridView photoGridView;
     private PhotoGridAdapter adapter;
 	private LoadDataTask loadtask;
+	private boolean isPlay = false;
+	private ImageButton play;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,6 +40,16 @@ public class PhotoGridViewActivity extends Activity {
 	
 	private void initView() {
 		photoGridView = (GridView)findViewById(R.id.gridview_photo);
+		play = (ImageButton)findViewById(R.id.play);
+		play.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				isPlay = !isPlay;
+				if(isPlay)
+					play.setImageResource(R.drawable.pause);
+				else
+					play.setImageResource(R.drawable.play);
+			}			
+		});
 	}
 	
 	private void fetchData() {
@@ -44,18 +58,12 @@ public class PhotoGridViewActivity extends Activity {
 		String photoUrl = "1";
 		photoUrls.add(photoUrl);
 		photoUrls.add(photoUrl);
-		photoUrls.add(photoUrl);
-		photoUrls.add(photoUrl);
-		photoUrls.add(photoUrl);
-		photoUrls.add(photoUrl);
 	}
 	
 	private void setView() {		
 		photoGridView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            	Intent newAct = new Intent();
-	            newAct.setClass(PhotoGridViewActivity.this, ListenViewPagerActivity.class);
-	            PhotoGridViewActivity.this.startActivity(newAct);
+            	
             }
         });
 		

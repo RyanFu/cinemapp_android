@@ -63,7 +63,7 @@ public class ImageLoader {
         this.mContext = context;
     }
     
-    public BitmapFactory.Options getBitmapOptions() {
+    public static BitmapFactory.Options getBitmapOptions() {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPurgeable = true;
         options.inInputShareable = true;

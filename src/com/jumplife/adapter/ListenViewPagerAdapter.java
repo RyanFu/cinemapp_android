@@ -1,16 +1,23 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
+
 import com.joint.cinemapp.R;
 import com.joint.cinemapp.entity.MovieListen;
+import com.jumplife.imageload.ImageLoader;
 import com.viewpagerindicator.IconPagerAdapter;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class ListenViewPagerAdapter extends PagerAdapter implements IconPagerAdapter{
@@ -46,6 +53,16 @@ public class ListenViewPagerAdapter extends PagerAdapter implements IconPagerAda
 			case 0:
 				view = View.inflate(mActivty, R.layout.albumlisten_viewpage_item, null);
 				ListView lvAlbum = (ListView)view.findViewById(R.id.lv_album);
+				ImageView albumPoster = (ImageView)view.findViewById(R.id.album_poster);
+				
+				DisplayMetrics displayMetrics = new DisplayMetrics();
+				mActivty.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+				InputStream inputStream = mActivty.getResources().openRawResource(R.drawable.movie1_album_cover_big_1);
+		        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+		        bitmap = Bitmap.createScaledBitmap(bitmap, displayMetrics.widthPixels, 
+		        		bitmap.getWidth() * bitmap.getHeight() / displayMetrics.widthPixels, true);
+		        albumPoster.setImageBitmap(bitmap);
+				
 				AlbumListenListAdapter albumAdapter = new AlbumListenListAdapter(mActivty, movielistens.getAlbums());
 				lvAlbum.setAdapter(albumAdapter);
 				lvAlbum.setOnItemClickListener(new itemOnClickListener(pos));

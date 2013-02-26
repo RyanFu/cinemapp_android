@@ -1,12 +1,16 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.joint.cinemapp.R;
 import com.joint.cinemapp.entity.Album;
 import com.joint.cinemapp.entity.Comment;
+import com.jumplife.imageload.ImageLoader;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,9 +52,12 @@ public class CommentListenListAdapter extends BaseAdapter{
 		TextView commentOwner = (TextView)converView.findViewById(R.id.comment_owner);
 		TextView commentTitle = (TextView)converView.findViewById(R.id.comment_title);
 		
-		//commentOwner.setText(comments.get(position).getTitle());
-		//commentTitle.setText(comments.get(position).getContent());
-		
+		commentOwner.setText(comments.get(position).getTitle());
+		commentTitle.setText(comments.get(position).getContent());
+		//imageLoader.DisplayImage(movies.get(position).getYoutubeId(), itemView.poster, displayMetrics.widthPixels);
+		InputStream inputStream = mActivity.getResources().openRawResource(comments.get(position).getPosterUrl());
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+        ivCommentOwner.setImageBitmap(bitmap);
 		return converView;
 
 	}

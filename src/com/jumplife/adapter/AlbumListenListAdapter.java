@@ -46,8 +46,8 @@ public class AlbumListenListAdapter extends BaseAdapter{
 		TextView albumEnName = (TextView)converView.findViewById(R.id.album_en_name);
 		
 		albumNo.setText("0" + (position + 1));
-		//albumChName.setText(albums.get(position).getChineseName());
-		//albumEnName.setText(albums.get(position).getEnglishName());
+		albumChName.setText(albums.get(position).getChineseName());
+		albumEnName.setText(albums.get(position).getEnglishName());
 		
 		return converView;
 

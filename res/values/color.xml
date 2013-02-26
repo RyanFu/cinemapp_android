@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <color name="main_color_blue">#2ecef0</color>
+    <color name="main_color_blue_press"> #1c9eb9</color>
     <color name="textcolor_grey">#b5b5b5</color>  
     
     <!-- Add for List -->

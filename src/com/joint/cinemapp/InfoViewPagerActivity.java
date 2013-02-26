@@ -11,6 +11,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 public class InfoViewPagerActivity extends Activity {
 	
@@ -19,6 +22,8 @@ public class InfoViewPagerActivity extends Activity {
 	private ViewPager mPager;
     private PageIndicator mIndicator;
 	private LoadDataTask loadtask;
+	private boolean isPlay = false;
+	private ImageButton play;
     
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,6 +40,16 @@ public class InfoViewPagerActivity extends Activity {
 	
 	private void initView() {
 		mPager = (ViewPager)findViewById(R.id.pager);
+		play = (ImageButton)findViewById(R.id.play);
+		play.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				isPlay = !isPlay;
+				if(isPlay)
+					play.setImageResource(R.drawable.pause);
+				else
+					play.setImageResource(R.drawable.play);
+			}			
+		});
 	}
 	
 	private void fetchData() {

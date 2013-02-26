@@ -1,5 +1,6 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.joint.cinemapp.R;
@@ -7,6 +8,8 @@ import com.joint.cinemapp.entity.MovieListen;
 import com.jumplife.imageload.ImageLoader;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,9 +81,12 @@ public class MovieListenGridAdapter extends BaseAdapter{
 		itemView.poster.getLayoutParams().width = width;
 		itemView.poster.setScaleType(ImageView.ScaleType.FIT_CENTER);
 		itemView.name.setText(movieListens.get(position).getChineseName());
-		itemView.songs.setText(movieListens.get(position).getSongsNo() + " " + mActivity.getResources().getString(R.string.song_number));
-		itemView.comments.setText(movieListens.get(position).getSongsNo() + " " + mActivity.getResources().getString(R.string.comment_number));
-		imageLoader.DisplayImage(movieListens.get(position).getPosterUrl(), itemView.poster, width);
+		itemView.songs.setText(movieListens.get(position).getAlbums().size() + " " + mActivity.getResources().getString(R.string.song_number));
+		itemView.comments.setText(movieListens.get(position).getComments().size() + " " + mActivity.getResources().getString(R.string.comment_number));
+		//imageLoader.DisplayImage(movieListens.get(position).getPosterUrl(), itemView.poster, width);
+		InputStream inputStream = mActivity.getResources().openRawResource(movieListens.get(position).getPosterUrl());
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+		itemView.poster.setImageBitmap(bitmap);
 		
 		return convertView;
 	}

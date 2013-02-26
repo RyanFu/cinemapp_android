@@ -10,8 +10,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 public class TrailerListViewActivity extends Activity {
@@ -20,6 +22,8 @@ public class TrailerListViewActivity extends Activity {
 	private ListView trailerListView;
     private TrailerListAdapter adapter;
 	private LoadDataTask loadtask;
+	private boolean isPlay = false;
+	private ImageButton play;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,16 +40,23 @@ public class TrailerListViewActivity extends Activity {
 	
 	private void initView() {
 		trailerListView = (ListView)findViewById(R.id.lv_trailer);
+		
+		play = (ImageButton)findViewById(R.id.play);
+		play.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				isPlay = !isPlay;
+				if(isPlay)
+					play.setImageResource(R.drawable.pause);
+				else
+					play.setImageResource(R.drawable.play);
+			}			
+		});
 	}
 	
 	private void fetchData() {
 		trailers = new ArrayList<Trailer>(10);
 		
 		Trailer trailer = new Trailer();
-		trailers.add(trailer);
-		trailers.add(trailer);
-		trailers.add(trailer);
-		trailers.add(trailer);
 		trailers.add(trailer);
 		trailers.add(trailer);
 	}

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.joint.cinemapp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/background"
     android:orientation="vertical" >
-    <include android:id="@+id/topbar" layout="@layout/topbar" />
+    <include android:id="@+id/topbar" layout="@layout/topbar"
+        android:layout_alignParentTop="true" />
     <LinearLayout
 	    android:orientation="vertical"
 	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent">	
+	    android:layout_height="fill_parent"
+        android:layout_below="@+id/topbar"
+        android:layout_above="@+id/playerbar" >	
 	    <com.viewpagerindicator.TitlePageIndicator
 	        android:id="@+id/indicator"
 	        android:padding="10dip"
@@ -31,7 +34,11 @@
 	        android:layout_weight="1"
 	        />	
 	</LinearLayout>
-    <include android:id="@+id/playbar" layout="@layout/playerbar" />
+    <LinearLayout android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" 
+        android:layout_width="fill_parent">
+        <include android:id="@+id/playerbar" layout="@layout/playerbar" />
+        </LinearLayout>
     
     <ImageButton android:id="@+id/refresh"
        android:layout_width="fill_parent"
@@ -41,4 +48,4 @@
        <!-- android:background="@drawable/button_background"
        android:src="@drawable/renew" -->
 
-</LinearLayout>
+</RelativeLayout>

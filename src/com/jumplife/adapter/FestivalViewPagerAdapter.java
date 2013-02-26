@@ -23,7 +23,7 @@ public class FestivalViewPagerAdapter extends PagerAdapter implements IconPagerA
 
 	public FestivalViewPagerAdapter(Activity activity, Festival festival) {
 		this.mActivity = activity;
-		this.festival = festival;
+		this.festival = festival.fakeData1();
 	}
 	
 	public int getCount() {
