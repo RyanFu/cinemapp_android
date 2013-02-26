@@ -58,6 +58,10 @@ public class PhotoGridViewActivity extends Activity {
 		String photoUrl = "1";
 		photoUrls.add(photoUrl);
 		photoUrls.add(photoUrl);
+		photoUrls.add(photoUrl);
+		photoUrls.add(photoUrl);
+		photoUrls.add(photoUrl);
+		photoUrls.add(photoUrl);
 	}
 	
 	private void setView() {		

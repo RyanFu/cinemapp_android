@@ -1,11 +1,14 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.joint.cinemapp.R;
 import com.jumplife.imageload.ImageLoader;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +72,12 @@ public class PhotoGridAdapter extends BaseAdapter{
 		itemView.poster.getLayoutParams().height = height;
 		itemView.poster.getLayoutParams().width = width;
 		itemView.poster.setScaleType(ImageView.ScaleType.FIT_CENTER);
-		imageLoader.DisplayImage(photoUrls.get(position), itemView.poster, width);
+		//imageLoader.DisplayImage(photoUrls.get(position), itemView.poster, width);
+		int[] photo = {R.drawable.girl_1, R.drawable.girl_2, R.drawable.girl_3, R.drawable.girl_4,
+				R.drawable.girl_5, R.drawable.girl_6};
+		InputStream inputStream = mActivity.getResources().openRawResource(photo[position]);
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+		itemView.poster.setImageBitmap(bitmap);
 		
 		return convertView;
 	}

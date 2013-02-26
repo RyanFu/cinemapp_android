@@ -1,11 +1,14 @@
 package com.jumplife.adapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.joint.cinemapp.R;
 import com.joint.cinemapp.entity.Trailer;
 import com.jumplife.imageload.ImageLoader;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +66,10 @@ public class TrailerListAdapter extends BaseAdapter{
 				
 		itemView.title.setText(trailers.get(position).getTitle());
 		itemView.time.setText(trailers.get(position).getRunningTime() + "s");
-		imageLoader.DisplayImage(trailers.get(position).getYoutubeId(), itemView.poster);
+		//imageLoader.DisplayImage(trailers.get(position).getYoutubeId(), itemView.poster);
+		InputStream inputStream = mActivity.getResources().openRawResource(trailers.get(position).getPosterUrl());
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, ImageLoader.getBitmapOptions());
+		itemView.poster.setImageBitmap(bitmap);
 		
 		return convertView;
 

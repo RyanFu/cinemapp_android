@@ -57,8 +57,7 @@ public class TrailerListViewActivity extends Activity {
 		trailers = new ArrayList<Trailer>(10);
 		
 		Trailer trailer = new Trailer();
-		trailers.add(trailer);
-		trailers.add(trailer);
+		trailers.add(trailer.fakeData());
 	}
 	
 	private void setView() {		
