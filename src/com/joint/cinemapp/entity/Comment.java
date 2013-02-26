@@ -11,17 +11,17 @@ public class Comment {
 	private int runningTime;
 	
 	public Comment fakeData1() {
-		Comment comment = new Comment(1, "", "", R.drawable.people1, 15);
+		Comment comment = new Comment(1, "導演／鴻鴻", "談驚駭入骨的社會案件《隨風而弒》", R.drawable.people1, 15);
 		return comment;
 	}
 	
 	public Comment fakeData2() {
-		Comment comment = new Comment(1, "", "", R.drawable.people2, 15);
+		Comment comment = new Comment(1, "知名地下樂團／拷秋勤", "激放投奔自由的海上歷險《漂流古巴》", R.drawable.people2, 15);
 		return comment;
 	}
 	
 	public Comment fakeData3() {
-		Comment comment = new Comment(1, "", "", R.drawable.people3, 15);
+		Comment comment = new Comment(1, "知名創作人/媒體人／陳樂融", "細述魔幻人生的迷幻愛情《長頸鹿女孩》", R.drawable.people3, 15);
 		return comment;
 	}
 	

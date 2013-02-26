@@ -18,28 +18,33 @@ public class Festival {
 	public Festival fakeData1() {
 		Festival festival = new Festival();
 		ArrayList<MovieInfo> lvMovies = new ArrayList<MovieInfo>(10);
-		lvMovies.add(new MovieInfo().fakeData1());
-		lvMovies.add(new MovieInfo().fakeData2());
-		lvMovies.add(new MovieInfo().fakeData3());
+		MovieInfo movieInfo = new MovieInfo();
+		lvMovies.add(movieInfo.fakeData1());
+		lvMovies.add(movieInfo.fakeData2());
+		lvMovies.add(movieInfo.fakeData3());
 		
 		festival.setFestivalName("第63屆 柏林影展");
 		festival.setFestivalDate("2013/02/07~2013/02/17");
 		festival.setPosterUrl(R.drawable.film_festival_1);
-		festival.setMovieInfos(movieInfos);
+		festival.setIntroductionName("影展介紹");
+		festival.setIntroduction("囊括三部獲柏林肯定，出自不同地域、文化的傑出電影：來自東歐匈牙利、榮獲柏林銀熊獎評審團大獎的《隨風而弒》，改編驚駭入骨的社會案件；來自南亞印尼、角逐柏林金熊獎的競賽片《長頸鹿女孩》，細述魔幻人生的迷幻愛情；來自拉美古巴、獲選柏林新世代單元的《漂流古巴》，激放投奔自由的海上歷險。三部風格迥異、各擅勝場，不但全面體現柏林精神，更開拓出觀者的「自由之窗」，撼動沉睡的感官與心靈。");
+		festival.setMovieInfos(lvMovies);
+		festival.setMovieListen(new MovieListen().fakeData1());
 		return festival;
 	}
 	
 	public Festival fakeData2() {
 		Festival festival = new Festival();
 		ArrayList<MovieInfo> lvMovies = new ArrayList<MovieInfo>(10);
-		lvMovies.add(new MovieInfo().fakeData1());
-		lvMovies.add(new MovieInfo().fakeData2());
-		lvMovies.add(new MovieInfo().fakeData3());
+		MovieInfo movieInfo = new MovieInfo();
+		lvMovies.add(movieInfo.fakeData1());
+		lvMovies.add(movieInfo.fakeData2());
+		lvMovies.add(movieInfo.fakeData3());
 		
 		festival.setFestivalName("日舞影展");
 		festival.setFestivalDate("2013/02/07~2013/02/17");
 		festival.setPosterUrl(R.drawable.film_festival_2);
-		festival.setMovieInfos(movieInfos);
+		festival.setMovieInfos(lvMovies);
 		return festival;
 	}
 	

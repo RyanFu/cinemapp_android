@@ -62,7 +62,7 @@ public class FestivalViewPagerAdapter extends PagerAdapter implements IconPagerA
 			default:
 				view = View.inflate(mActivity, R.layout.movieinfo_viewpage_item, null);
 				ListView lvMovie = (ListView)view.findViewById(R.id.lv_movie);
-		        
+		        Log.d("", "movie info size : " + festival.getMovieInfos().size());
 		        MovieListAdapter adapter = new MovieListAdapter(mActivity, festival.getMovieInfos());
 		        lvMovie.setAdapter(adapter);
 		        lvMovie.setOnItemClickListener(new movieItemOnClickListener());

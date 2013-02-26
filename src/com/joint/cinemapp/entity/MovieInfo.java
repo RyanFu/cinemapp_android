@@ -46,6 +46,7 @@ public class MovieInfo {
 		this.id = id;
 		this.chineseName = chineseName;
 		this.englishName = englishName;
+		this.introduction = introduction;
 		this.releaseDate = releaseDate;
 		this.posterUrl = posterUrl;
 		this.runningTime = runningTime;
