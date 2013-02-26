@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <include android:id="@+id/topbar" layout="@layout/topbar" />
+    <GridView android:id="@+id/gridview_movielisten"
+        android:background="@color/background"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:verticalSpacing="20dp"  
+        android:horizontalSpacing="20dp"
+        android:numColumns="2" />
+    <include android:id="@+id/playbar" layout="@layout/playerbar" />
+    
+    <ImageButton android:id="@+id/refresh"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:scaleType="fitCenter"
+       android:visibility="gone"
+       android:background="@drawable/button_background"
+       android:src="@drawable/renew" />
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <color name="main_color_blue">#2ecef0</color>
+    <color name="textcolor_grey">#b5b5b5</color>  
+    
+    <!-- Add for List -->
+    <color name="list_item_bg">#f4f4f4</color>
+    <color name="list_item_round">#aa808080</color>
+    <color name="list_item_shadow">#c3c6c9</color>
+    
+    <!-- Add for Grid -->
+    <color name="grid_item_bg_light">#fbfbfb</color>
+    <color name="grid_item_bg_dark">#e1e1e1</color>
+    <color name="grid_item_round">#8b8b8b</color>
+    <color name="grid_item_green">#7aa800</color>
+
+    
+    <color name="background">#f2f2f2</color>
+    <color name="white1">#FFFFFF</color>
+    <color name="white2">#DDDDDD</color>
+    <color name="black">#000000</color>
+    <color name="transparent100">#00000000</color>
+    <color name="transparent80">#33000000</color>
+    <color name="transparent50">#88000000</color>
+</resources>

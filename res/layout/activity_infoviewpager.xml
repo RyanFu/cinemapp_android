@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.joint.cinemapp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+    <include android:id="@+id/topbar" layout="@layout/topbar" />
+    <LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">	
+	    <com.viewpagerindicator.TitlePageIndicator
+	        android:id="@+id/indicator"
+	        android:padding="10dip"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:background="@color/black"
+	        android:textColor="@color/main_color_blue"	        
+	        app:footerColor="@color/main_color_blue"
+	        app:footerLineHeight="1dp"
+	        app:footerIndicatorHeight="3dp"
+	        app:footerIndicatorStyle="underline"
+	        app:selectedColor="@color/main_color_blue"
+	        app:selectedBold="true"
+	        />
+	    <android.support.v4.view.ViewPager
+	        android:id="@+id/pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="1"
+	        />	
+	</LinearLayout>
+    <include android:id="@+id/playbar" layout="@layout/playerbar" />
+    
+    <ImageButton android:id="@+id/refresh"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:scaleType="fitCenter"
+       android:visibility="gone"
+       android:background="@drawable/button_background"
+       android:src="@drawable/renew" />
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:layout_margin="20dp"
+	android:background="@drawable/item_background"
+	>
+	<ImageView android:id="@+id/poster"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:scaleType="fitCenter"
+        android:src="@drawable/post_background" />
+	<TextView android:id="@+id/movie_name"
+	    android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/poster"       
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/movie_name"
+        android:textSize="18dp"
+        android:textColor="@color/black" />
+	<TextView android:id="@+id/movie_name_en"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/movie_name"       
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/movie_name_en"
+        android:textSize="15dp"
+        android:textColor="@color/black" />
+	<TextView android:id="@+id/release_date"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/movie_name"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="15dp"
+        android:textColor="@color/black" />
+	<ImageView 
+        android:layout_width="18dp" 
+        android:layout_height="18dp"
+        android:layout_below="@+id/movie_name"
+        android:layout_toLeftOf="@+id/release_date"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/play_date" />
+</RelativeLayout>

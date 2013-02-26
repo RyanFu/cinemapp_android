@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.joint.cinemapp"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+    <include android:id="@+id/topbar" layout="@layout/topbar"
+        android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@+id/rl_viewpager"
+	    android:layout_height="fill_parent"
+	    android:layout_width="wrap_content"
+        android:layout_below="@+id/topbar" >
+	    <android.support.v4.view.ViewPager
+	        android:id="@+id/pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+	    <com.viewpagerindicator.CirclePageIndicator
+	        android:id="@+id/indicator"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_alignBottom="@+id/pager"
+	        android:padding="8dp"
+	        app:radius="4dp"
+	        app:fillColor="@color/main_color_blue"
+	        app:pageColor="@color/white1" />
+    </RelativeLayout>
+    <ScrollView         
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/rl_viewpager"
+        android:layout_above="@+id/playbar" >
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:orientation="vertical" >
+		    <LinearLayout android:id="@+id/ll_movieinfo"
+			    android:layout_height="wrap_content"
+			    android:layout_width="fill_parent"
+		        android:layout_margin="10dp"
+		        android:padding="10dp"
+		        android:background="@drawable/item_background"
+			    android:orientation="horizontal"
+			    android:weightSum="1.0" >
+			    <ImageView
+			        android:layout_height="wrap_content"
+		            android:layout_width="wrap_content"
+		            android:scaleType="fitCenter"
+		            android:layout_weight="0.30" />
+			    <LinearLayout 
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:orientation="vertical"
+		            android:layout_weight="0.70" >
+		            <TextView 
+		                android:layout_height="wrap_content"
+		                android:layout_width="wrap_content"
+		                android:textColor="@color/main_color_blue"
+		                android:textSize="25dp"
+		                android:text="@string/movie_info"/>
+		            <TextView 
+		                android:layout_height="wrap_content"
+		                android:layout_width="wrap_content"
+		                android:textColor="@color/main_color_blue"
+		                android:textSize="18dp"
+		                android:text="@string/movie_info_en"/>
+			        </LinearLayout>
+			    </LinearLayout>"
+		    <LinearLayout android:id="@+id/ll_movielisten"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:layout_margin="10dp"
+		        android:padding="10dp"
+		        android:background="@drawable/item_background"
+		        android:orientation="horizontal"
+		        android:weightSum="1.0" >
+		        <LinearLayout 
+		            android:layout_height="wrap_content"
+		            android:layout_width="fill_parent"
+		            android:orientation="vertical"
+		            android:layout_weight="0.70" >
+		            <TextView 
+		                android:layout_height="wrap_content"
+		                android:layout_width="wrap_content"
+		                android:textColor="@color/main_color_blue"
+		                android:textSize="25dp"
+		                android:text="@string/movie_listen"/>
+		            <TextView 
+		                android:layout_height="wrap_content"
+		                android:layout_width="wrap_content"
+		                android:textColor="@color/main_color_blue"
+		                android:textSize="18dp"
+		                android:text="@string/movie_listen_en"/>
+		            </LinearLayout>
+		        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+</RelativeLayout>
